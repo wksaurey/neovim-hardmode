@@ -15,17 +15,17 @@ the arrow keys.
 MAPPINGS                                        *hardmode-mappings*
 
 To enable it:
-:call HardMode()
+:lua HardMode()
 
 To disable it:
-:call EasyMode()
+:lua EasyMode()
 
 To toggle it:
-:call ToggleHardMode()
+:lua ToggleHardMode()
 
 You may also wish to add the following to lines to your lua configuration:
 vim.keymap.set('n', '<leader>hm', function() 
-    vim.cmd('call ToggleHardMode()') 
+    vim.cmd('lua ToggleHardMode()') 
 end)
 
 With that line added, you can toggle Hard Mode by pressing <leader>hm 

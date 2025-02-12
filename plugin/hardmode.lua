@@ -6,7 +6,7 @@ Version:      1.0
 ]]
 
 Hardmodemsg = "Neovim Hard-Mode |':call EasyMode()' to exit|"
-Hardmode_on = 0
+Hardmode_on = false
 
 function HardMode()
     vim.o.backspace = ''
@@ -46,7 +46,7 @@ function HardMode()
     vim.keymap.set('n', '-', '<Esc>:echo Hardmodemsg<CR>', { noremap=true })
     vim.keymap.set('n', '+', '<Esc>:echo Hardmodemsg<CR>', { noremap=true })
 
-    Hardmode_on = 1
+    Hardmode_on = true
     print(Hardmodemsg)
 end
 
@@ -88,7 +88,7 @@ function EasyMode()
     vim.keymap.set('n', '-', '', { silent=true })
     vim.keymap.set('n', '+', '', { silent=true })
 
-    Hardmode_on = 0
+    Hardmode_on = false
     print("You are weak...")
 end
 

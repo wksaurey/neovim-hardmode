@@ -4,7 +4,7 @@ VIM: Hard Mode
 Hard Mode is a plugin which disables the arrow keys, the hjkl keys,
 the page up/down keys, and a handful of other keys which allow one
 to rely on character-wise navigation. The philosophy behind Hard Mode
-is that you'll never master Vim's advanced motion and search functionality
+is that you'll never master Neovim's advanced motion and search functionality
 if you can fall back on the anti-pattern of fumbling around your code with
 the arrow keys.
 
@@ -12,25 +12,21 @@ MAPPINGS
 --------
 
 To enable it:
-
-    :call HardMode()
+:call HardMode()
 
 To disable it:
+:call EasyMode()
 
-    :call EasyMode()
+To toggle it:
+:call ToggleHardMode()
 
-To enable it by default, add this to your vimrc:
+You may also wish to add the following to lines to your lua configuration:
+vim.keymap.set('n', '<leader>hm', function() 
+    vim.cmd('call ToggleHardMode()') 
+end)
 
-    autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
-
-You may also wish to add the following to lines to your vimrc:
-
-    nnoremap <leader>h <Esc>:call EasyMode()<CR>
-    nnoremap <leader>H <Esc>:call HardMode()<CR>
-
-With those lines added, presuming your leader is still the `\` key, you
-can enable Hard Mode by pressing `\H` while in Normal-mode and disable it
-by pressing `\h` while in Normal-mode.
+With that line added, you can toggle Hard Mode by pressing <leader>hm 
+while in |Normal-mode|.
 
 Installation
 ------------

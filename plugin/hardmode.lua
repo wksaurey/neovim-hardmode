@@ -94,8 +94,8 @@ end
 
 function ToggleHardMode()
     if Hardmode_on then
-        vim.fn.EasyMode()
+        EasyMode()
     else
-        vim.fn.HardMode()
+        HardMode()
     end
 end

@@ -6,7 +6,7 @@ let g:hardmodemsg = "VIM: hard Mode [ ':call EasyMode()' to exit]"
 let g:hardmode_on = 0
 
 fun! HardMode()
-    set backspace=0
+    set backspace=''
 
     nnoremap <buffer> <Left> <Esc>:echo g:hardmodemsg<CR>
     nnoremap <buffer> <Right> <Esc>:echo g:hardmodemsg<CR>

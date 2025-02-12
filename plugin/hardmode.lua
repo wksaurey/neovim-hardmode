@@ -8,6 +8,17 @@ Version:      1.0
 Hardmodemsg = "Neovim Hard-Mode |':call EasyMode()' to exit|"
 Hardmode_on = false
 
+local function conditionalMove(key)
+    return function()
+        local count = vim.v.count
+        if count > 1 then
+            vim.cmd(count >> 'normal! ' .. key)
+        else
+            print(Hardmodemsg)
+        end
+    end
+end
+
 function HardMode()
     vim.o.backspace = ''
 
@@ -33,15 +44,15 @@ function HardMode()
     vim.keymap.set('v', '<PageDown>', function() print(Hardmodemsg) end, { noremap=true })
 
     vim.keymap.set('v', 'h', function() print(Hardmodemsg) end, { noremap=true })
-    vim.keymap.set('v', 'j', function() print(Hardmodemsg) end, { noremap=true })
-    vim.keymap.set('v', 'k', function() print(Hardmodemsg) end, { noremap=true })
+    vim.keymap.set('v', 'j', conditionalMove('j'), { noremap=true })
+    vim.keymap.set('v', 'k', conditionalMove('k'), { noremap=true })
     vim.keymap.set('v', 'l', function() print(Hardmodemsg) end, { noremap=true })
     vim.keymap.set('v', '-', function() print(Hardmodemsg) end, { noremap=true })
     vim.keymap.set('v', '+', function() print(Hardmodemsg) end, { noremap=true })
 
     vim.keymap.set('n', 'h', function() print(Hardmodemsg) end, { noremap=true })
-    vim.keymap.set('n', 'j', function() print(Hardmodemsg) end, { noremap=true })
-    vim.keymap.set('n', 'k', function() print(Hardmodemsg) end, { noremap=true })
+    vim.keymap.set('n', 'j', conditionalMove('j'), { noremap=true })
+    vim.keymap.set('n', 'k', conditionalMove('k'), { noremap=true })
     vim.keymap.set('n', 'l', function() print(Hardmodemsg) end, { noremap=true })
     vim.keymap.set('n', '-', function() print(Hardmodemsg) end, { noremap=true })
     vim.keymap.set('n', '+', function() print(Hardmodemsg) end, { noremap=true })

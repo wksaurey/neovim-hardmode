@@ -12,7 +12,7 @@ local function conditionalMove(key)
     return function()
         local count = vim.v.count
         if count > 1 then
-            local command = count .. 'normal! ' .. key
+            local command = count .. key
             print(command)
             vim.cmd(command)
         else
